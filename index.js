@@ -15,7 +15,7 @@ async function makeRequest(config) {
 }
 
 export async function truview(movie_name, options = {}) {
-  const { serperApiKey, geminiApiKey } = options;
+  const { serperApiKey, geminiApiKey, result_length } = options;
 
   if (!serperApiKey || !geminiApiKey) {
     throw new Error(
@@ -56,7 +56,7 @@ export async function truview(movie_name, options = {}) {
   const genAI = new GoogleGenerativeAI(geminiApiKey);
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-  const prompt = `Based on the following Reddit comments about the movie "${movie_name}", provide a concise, spoiler-free review. Structure your review into three sections: "The Good", "The Bad", and "Who Should Watch It?".\n\n--- REDDIT COMMENTS ---\n${aggregatedComments}`;
+  const prompt = `Based on the following Reddit comments about the movie "${movie_name}", provide a concise, spoiler-free review. Structure your review into three sections: "The Good", "The Bad", and "Who Should Watch It?" The review should be under ${result_length} max.\n\n--- REDDIT COMMENTS ---\n${aggregatedComments}`;
 
   const result = await model.generateContent(prompt);
   const response = result.response;
