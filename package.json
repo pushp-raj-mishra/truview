@@ -18,6 +18,11 @@
     "index.js",
     "aggregator.js"
   ],
+  "exports": {
+    ".": {
+      "import": "./index.js"
+    }
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
