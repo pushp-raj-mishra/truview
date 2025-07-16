@@ -1,6 +1,6 @@
 {
   "name": "truview",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A package to scrape true reviews about a movie from social media",
   "homepage": "https://github.com/pushp-raj-mishra/truview#readme",
   "bugs": {
