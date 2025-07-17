@@ -21,7 +21,11 @@ export async function aggregate(links) {
 
   for (const link of links) {
     try {
-      const response = await fetch(link);
+      const response = await fetch(link, {
+        headers: {
+          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36"
+        }
+      });
 
       if (!response.ok) {
         continue;
